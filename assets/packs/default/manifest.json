@@ -1,0 +1,22 @@
+{
+  "id": "default",
+  "displayName": "Default commercial-safe replacement pack",
+  "status": "placeholder",
+  "commercialUse": "allowed-after-provenance-review",
+  "requiredSlots": [
+    "ship model and textures",
+    "track geometry",
+    "track diffuse/specular/normal textures",
+    "skybox",
+    "HUD images",
+    "music and sound effects",
+    "help screens and icons"
+  ],
+  "provenanceChecklist": [
+    "asset author or vendor recorded",
+    "license file stored beside asset",
+    "commercial rights confirmed",
+    "AI-generated or stock-source restrictions documented",
+    "attribution text prepared when required"
+  ]
+}
