@@ -14,7 +14,7 @@ const KEY_MAP = new Map([
 export class InputSystem {
   constructor({ events }) {
     this.events = events;
-    this.actions = new Set();
+    this.actions = new Map();
     this.target = null;
   }
 
@@ -29,6 +29,23 @@ export class InputSystem {
     this.target.removeEventListener('keydown', this.#onKeyDown);
     this.target.removeEventListener('keyup', this.#onKeyUp);
     this.target = null;
+    this.clearSource('keyboard');
+  }
+
+  setAction(action, pressed, source = 'programmatic') {
+    if (!this.actions.has(action)) this.actions.set(action, new Set());
+    const sources = this.actions.get(action);
+    if (pressed) sources.add(source);
+    else sources.delete(source);
+    if (sources.size === 0) this.actions.delete(action);
+    this.events?.emit(pressed ? 'input:down' : 'input:up', { action, source });
+  }
+
+  clearSource(source) {
+    for (const [action, sources] of this.actions.entries()) {
+      sources.delete(source);
+      if (sources.size === 0) this.actions.delete(action);
+    }
   }
 
   isDown(action) {
@@ -49,14 +66,12 @@ export class InputSystem {
   #onKeyDown = (event) => {
     const action = KEY_MAP.get(event.code);
     if (!action) return;
-    this.actions.add(action);
-    this.events?.emit('input:down', { action });
+    this.setAction(action, true, 'keyboard');
   };
 
   #onKeyUp = (event) => {
     const action = KEY_MAP.get(event.code);
     if (!action) return;
-    this.actions.delete(action);
-    this.events?.emit('input:up', { action });
+    this.setAction(action, false, 'keyboard');
   };
 }
