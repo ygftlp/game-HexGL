@@ -1,0 +1,8 @@
+{
+  "name": "game-hexgl-commercial-shell",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate:structure": "node scripts/validate-structure.mjs"
+  }
+}
