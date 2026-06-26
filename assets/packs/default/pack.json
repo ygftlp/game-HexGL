@@ -1,0 +1,18 @@
+{
+  "id": "default",
+  "label": "Default commercial-safe asset pack placeholder",
+  "status": "placeholder",
+  "commercialUse": true,
+  "requiredReplacements": [
+    "ship models and textures",
+    "track models, collision and height maps",
+    "skybox and environment textures",
+    "HUD textures and fonts",
+    "music and sound effects",
+    "brand, title, favicon and social images"
+  ],
+  "policy": {
+    "allowLegacyFallbackInDevelopment": true,
+    "allowLegacyFallbackInCommercialBuild": false
+  }
+}

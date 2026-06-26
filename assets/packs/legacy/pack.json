@@ -1,0 +1,17 @@
+{
+  "id": "legacy",
+  "label": "Legacy HexGL asset references",
+  "status": "non-commercial-risk",
+  "commercialUse": false,
+  "licenseNotes": [
+    "README claims MIT unless specified, but several source files declare CC BY-NC 3.0.",
+    "Treat existing textures, geometry, audio and branded credits as blocked for commercial release until each item is relicensed or replaced."
+  ],
+  "roots": {
+    "textures": ["textures", "textures.full"],
+    "geometry": ["geometries"],
+    "audio": ["audio"],
+    "ui": ["css"]
+  },
+  "replacementTarget": "assets/packs/default"
+}

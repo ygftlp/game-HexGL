@@ -29,17 +29,6 @@
         width: 100%;
       }
     </style>
-    <script type="text/javascript">
-    //analytics
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-26274524-4']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-    </script>
   </head>
 
   <body>
@@ -122,6 +111,21 @@
     <script src="bkcore/hexgl/tracks/Cityscape.js"></script>
 
     <script src="bkcore/hexgl/HexGL.js"></script>
+
+    <script src="src/core/App.js"></script>
+    <script src="src/core/EventBus.js"></script>
+    <script src="src/content/AssetPackRegistry.js"></script>
+    <script src="src/gameplay/GameSession.js"></script>
+    <script src="src/rendering/RendererFacade.js"></script>
+    <script src="src/ui/MenuController.js"></script>
+    <script src="src/integrations/platform/BrowserPlatform.js"></script>
+    <script src="src/integrations/ads/NoopAds.js"></script>
+    <script src="src/integrations/analytics/NoopAnalytics.js"></script>
+    <script src="src/integrations/storage/NoopStorage.js"></script>
+    <script src="src/systems/SaveSystem.js"></script>
+    <script src="src/scenes/BootScene.js"></script>
+    <script src="src/scenes/MenuScene.js"></script>
+    <script src="src/scenes/RaceScene.js"></script>
 
     <script src="launch.js"></script>
 
