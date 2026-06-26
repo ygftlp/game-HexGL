@@ -17,11 +17,24 @@ const requiredDirs = [
   'docs',
 ];
 
+const requiredFiles = [
+  'src/systems/OrientationSystem.js',
+  'src/ui/OrientationGate.js',
+  'src/ui/MobileControls.js',
+  'docs/mobile-first.md',
+];
+
 const failures = [];
 
 for (const dir of requiredDirs) {
   if (!fs.existsSync(path.join(root, dir))) {
     failures.push(`Missing required directory: ${dir}`);
+  }
+}
+
+for (const file of requiredFiles) {
+  if (!fs.existsSync(path.join(root, file))) {
+    failures.push(`Missing required mobile-first file: ${file}`);
   }
 }
 
@@ -43,6 +56,12 @@ for (const file of walk(path.join(root, 'src/gameplay'))) {
   assertNot(/from ['"]\.\.\/(ui|rendering|integrations|scenes)\//.test(content), relative, 'gameplay must stay independent from UI, rendering, integrations and scenes');
 }
 
+const indexHtml = readIfExists('index.html');
+assertNot(!indexHtml.includes('viewport-fit=cover'), 'index.html', 'mobile entry should support safe-area viewport fitting');
+assertNot(!indexHtml.includes('orientation-gate'), 'index.html', 'mobile entry should include orientation gate styles');
+assertNot(!indexHtml.includes('mobile-controls'), 'index.html', 'mobile entry should include touch-control styles');
+assertNot(!indexHtml.includes('@media (orientation: landscape) and (pointer: coarse)'), 'index.html', 'mobile entry should include landscape phone media query');
+
 const manifestPath = path.join(root, 'assets/packs/default/manifest.json');
 if (!fs.existsSync(manifestPath)) {
   failures.push('Missing default asset pack manifest.');
@@ -63,6 +82,11 @@ console.log('Architecture validation passed.');
 
 function assertNot(condition, file, message) {
   if (condition) failures.push(`${file}: ${message}`);
+}
+
+function readIfExists(relativePath) {
+  const fullPath = path.join(root, relativePath);
+  return fs.existsSync(fullPath) ? fs.readFileSync(fullPath, 'utf8') : '';
 }
 
 function walk(start) {
