@@ -1,0 +1,23 @@
+{
+  "name": "default",
+  "version": "0.1.0",
+  "license": "Project-owned placeholder assets. Replace before production if visual identity changes.",
+  "commercialUse": true,
+  "notes": "This pack intentionally contains only placeholder metadata and SVG primitives for the new skeleton.",
+  "assets": {
+    "textures": {
+      "prototype.ship": {
+        "path": "prototype-ship.svg",
+        "license": "project-placeholder"
+      }
+    },
+    "models": {},
+    "audio": {},
+    "tracks": {
+      "prototype-loop": {
+        "source": "generated-placeholder",
+        "license": "project-placeholder"
+      }
+    }
+  }
+}
