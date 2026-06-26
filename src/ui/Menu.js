@@ -9,16 +9,18 @@ export class MainMenu {
     const panel = root.querySelector('#game-panel');
     const hud = root.querySelector('#hud-panel');
     panel.innerHTML = `
-      <h1>Ready to race</h1>
-      <p class="muted">This is a commercial-safe skeleton entry. Replace prototype rendering and content with owned assets before release.</p>
-      <button type="button" id="start-race">Start prototype race</button>
-      <button type="button" class="secondary" id="open-legacy">Open legacy runtime</button>
+      <h1>手机横屏竞速原型</h1>
+      <p class="muted">该分支现在按手机端横屏优先设计：竖屏会提示旋转，比赛内使用触控按钮。</p>
+      <button type="button" id="start-race">开始横屏测试</button>
+      <button type="button" class="secondary" id="open-legacy">打开旧版参考入口</button>
     `;
+    hud.classList.remove('mobile-hud');
     hud.innerHTML = `
-      <h2>Asset pack</h2>
-      <div class="metric"><span>Active pack</span><strong>${pack?.name ?? 'unknown'}</strong></div>
-      <div class="metric"><span>Commercial use</span><strong>${pack?.commercialUse ? 'Allowed' : 'Blocked'}</strong></div>
-      <p class="muted">Legacy assets are isolated in a quarantined pack and must not be referenced by new src modules.</p>
+      <h2>移动端策略</h2>
+      <div class="metric"><span>屏幕方向</span><strong>横屏优先</strong></div>
+      <div class="metric"><span>输入方式</span><strong>触控按钮</strong></div>
+      <div class="metric"><span>资源包</span><strong>${pack?.name ?? 'unknown'}</strong></div>
+      <p class="muted">商业发布前仍需替换 legacy 素材与品牌元素。</p>
     `;
     panel.querySelector('#start-race').addEventListener('click', () => {
       events.emit('scene:change', { scene: 'race' });
