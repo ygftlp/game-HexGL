@@ -1,0 +1,18 @@
+{
+  "id": "legacy",
+  "displayName": "Legacy HexGL assets",
+  "status": "restricted-review-required",
+  "commercialUse": "do-not-ship-without-rights-clearance",
+  "sourceRoots": [
+    "audio/",
+    "geometries/",
+    "textures/",
+    "textures.full/",
+    "css/"
+  ],
+  "notes": [
+    "This pack references existing repository resources instead of copying binaries.",
+    "Some source files declare Creative Commons Attribution-NonCommercial 3.0; treat all linked art/audio/track resources as blocked for commercial release until relicensed or replaced.",
+    "Keep original attribution in credits while this pack is used for evaluation builds."
+  ]
+}
